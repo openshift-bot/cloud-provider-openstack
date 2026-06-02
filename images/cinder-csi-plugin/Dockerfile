@@ -1,9 +1,9 @@
-FROM registry.ci.openshift.org/ocp/builder:rhel-9-golang-1.26-openshift-5.0
+FROM registry.ci.openshift.org/ocp/builder:rhel-9-golang-1.26-openshift-4.23
 WORKDIR /go/src/k8s.io/cloud-provider-openstack
 COPY . .
 RUN go build -o cinder-csi-plugin ./cmd/cinder-csi-plugin
 
-FROM registry.ci.openshift.org/ocp/5.0:base-rhel9
+FROM registry.ci.openshift.org/ocp/4.23:base-rhel9
 
 # Get mkfs & blkid
 RUN yum update -y && \
